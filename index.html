@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CULINA | Recipe Finder</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+     <video autoplay muted loop id="myVideo">
+      <source src="food.mp4" type="video/mp4">
+      <source src="food.webm" type="video/webm">
+      Your browser does not support the video tag.
+     </video>
+    <header class="main-header">
+      <div class="header-content">
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="#" id="logout-button">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="recipe-finder-container">
+      <h1 class="centered-logo">CULINA</h1>
+      <form id="search-form" class="search-box">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search by name (e.g., 'chicken')"
+        />
+        <button type="submit" id="search-button">Search</button>
+      </form>
+
+      <div class="random-button-container">
+        <button id="random-button" class="random-button">
+          Get Random Recipe
+        </button>
+      </div>
+
+      <div class="message" id="message-area">
+        Search for a recipe or get a random one!
+      </div>
+
+      <div class="results-grid" id="results-grid"></div>
+    </div>
+
+    <div class="modal-container hidden" id="recipe-modal">
+      <div class="modal-content">
+        <button id="modal-close-btn" class="modal-close-btn">+</button>
+        <div id="recipe-details-content"></div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+    <script>
+      const currentUser = localStorage.getItem('culinaCurrentUser');
+      if (!currentUser) {
+        alert('You must be logged in to access this page.');
+        window.location.href = 'login.html';
+      }
+
+      document.getElementById('logout-button').addEventListener('click', () => {
+        localStorage.removeItem('culinaCurrentUser');
+        window.location.href = 'login.html';
+      });
+    </script>
+    <div class="bubble"></div>
+  </body>
+</html>
